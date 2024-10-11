@@ -25,6 +25,11 @@ class DataArguments:
     Arguments pertaining to what data we are going to input our model for training and evaluation.
     """
 
+    meta_path: Optional[str] = field(
+        default=None,
+        metadata={'help': 'The path of the meta file of datasets.'},
+    )
+
     template: Optional[str] = field(
         default=None,
         metadata={"help": "Which template to use for constructing prompts in training and inference."},

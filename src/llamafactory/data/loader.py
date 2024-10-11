@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import math
+import json
 import os
 import sys
 from typing import TYPE_CHECKING, Dict, Literal, Optional, Sequence, Union
@@ -103,7 +105,7 @@ def _load_single_dataset(
         if isinstance(dataset, MsDataset):
             dataset = dataset.to_hf_dataset()
     else:
-        dataset = load_dataset(
+        dataset = load_dataset( ### torch 数据加载必须调用hf的datasets库
             path=data_path,
             name=data_name,
             data_dir=data_dir,
@@ -147,15 +149,23 @@ def _get_merged_dataset(
     r"""
     Gets the merged datasets in the standard format.
     """
+    if data_args.meta_path is not None:
+        with open(data_args.meta_path, "r") as f:
+            dataset_names = json.load(f).keys()
+
+    print('dataset_names:\n', dataset_names)
     if dataset_names is None:
         return None
 
     datasets = []
-    for dataset_attr in get_dataset_list(dataset_names, data_args.dataset_dir):
+    for dataset_attr in get_dataset_list(dataset_names, data_args.dataset_dir, data_args.meta_path):
         if (stage == "rm" and dataset_attr.ranking is False) or (stage != "rm" and dataset_attr.ranking is True):
             raise ValueError("The dataset is not applicable in the current training stage.")
-
-        datasets.append(_load_single_dataset(dataset_attr, model_args, data_args, training_args))
+        if dataset_attr.repeat_time and dataset_attr.repeat_time > 1:
+            for i in range(math.floor(dataset_attr.repeat_time)):
+                datasets.append(_load_single_dataset(dataset_attr, model_args, data_args, training_args))
+        else:
+            datasets.append(_load_single_dataset(dataset_attr, model_args, data_args, training_args))
 
     return merge_dataset(datasets, data_args, seed=training_args.seed)
 

@@ -32,7 +32,8 @@ class DatasetAttr:
     # basic configs
     load_from: Literal["hf_hub", "ms_hub", "script", "file"]
     dataset_name: str
-    formatting: Literal["alpaca", "sharegpt"] = "alpaca"
+    formatting: Literal["alpaca", "sharegpt"] = "sharegpt"
+    #formatting: Optional[str] = "sharegpt"
     ranking: bool = False
     # extra configs
     subset: Optional[str] = None
@@ -42,8 +43,8 @@ class DatasetAttr:
     # common columns
     system: Optional[str] = None
     tools: Optional[str] = None
-    images: Optional[str] = None
-    videos: Optional[str] = None
+    images: Optional[str] = "images"
+    videos: Optional[str] = None #"videos"
     # rlhf columns
     chosen: Optional[str] = None
     rejected: Optional[str] = None
@@ -54,12 +55,15 @@ class DatasetAttr:
     response: Optional[str] = "output"
     history: Optional[str] = None
     # sharegpt columns
-    messages: Optional[str] = "conversations"
+    messages: Optional[str] = "messages"
     # sharegpt tags
-    role_tag: Optional[str] = "from"
-    content_tag: Optional[str] = "value"
-    user_tag: Optional[str] = "human"
-    assistant_tag: Optional[str] = "gpt"
+    role_tag: Optional[str] = "role"
+    content_tag: Optional[str] = "content"
+    user_tag: Optional[str] = "user"
+    assistant_tag: Optional[str] = "assistant"
+
+    repeat_time: Optional[int] = 1
+
     observation_tag: Optional[str] = "observation"
     function_tag: Optional[str] = "function_call"
     system_tag: Optional[str] = "system"
@@ -71,7 +75,7 @@ class DatasetAttr:
         setattr(self, key, obj.get(key, default))
 
 
-def get_dataset_list(dataset_names: Optional[Sequence[str]], dataset_dir: str) -> List["DatasetAttr"]:
+def get_dataset_list(dataset_names: Optional[Sequence[str]], dataset_dir: str, meta_path: str) -> List["DatasetAttr"]:
     r"""
     Gets the attributes of the datasets.
     """
@@ -81,10 +85,13 @@ def get_dataset_list(dataset_names: Optional[Sequence[str]], dataset_dir: str) -
     if dataset_dir == "ONLINE":
         dataset_info = None
     else:
-        if dataset_dir.startswith("REMOTE:"):
-            config_path = cached_file(path_or_repo_id=dataset_dir[7:], filename=DATA_CONFIG, repo_type="dataset")
+        if meta_path is None:
+            if dataset_dir.startswith("REMOTE:"):
+                config_path = cached_file(path_or_repo_id=dataset_dir[7:], filename=DATA_CONFIG, repo_type="dataset")
+            else:
+                config_path = os.path.join(dataset_dir, DATA_CONFIG)
         else:
-            config_path = os.path.join(dataset_dir, DATA_CONFIG)
+            config_path = meta_path
 
         try:
             with open(config_path, "r") as f:
@@ -119,12 +126,14 @@ def get_dataset_list(dataset_names: Optional[Sequence[str]], dataset_dir: str) -
         else:
             dataset_attr = DatasetAttr("file", dataset_name=dataset_info[name]["file_name"])
 
-        dataset_attr.set_attr("formatting", dataset_info[name], default="alpaca")
+        #dataset_attr.set_attr("formatting", dataset_info[name], default="alpaca")
+        dataset_attr.set_attr("formatting", dataset_info[name], default="sharegpt")
         dataset_attr.set_attr("ranking", dataset_info[name], default=False)
         dataset_attr.set_attr("subset", dataset_info[name])
         dataset_attr.set_attr("split", dataset_info[name], default="train")
         dataset_attr.set_attr("folder", dataset_info[name])
         dataset_attr.set_attr("num_samples", dataset_info[name])
+        dataset_attr.set_attr("repeat_time", dataset_info[name])
 
         if "columns" in dataset_info[name]:
             column_names = ["system", "tools", "images", "videos", "chosen", "rejected", "kto_tag"]

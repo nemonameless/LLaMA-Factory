@@ -1,19 +1,4 @@
 {
-  "mllm_demo": {
-    "file_name": "mllm_demo.json",
-    "formatting": "sharegpt",
-    "repeat_time": 1,
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tags": {
-      "role_tag": "role",
-      "content_tag": "content",
-      "user_tag": "user",
-      "assistant_tag": "assistant"
-    }
-  },
   "dvqa_train_200k": {
     "file_name": "playground/opensource_json/dvqa_train_200k.json",
     "repeat_time": 1
@@ -38,21 +23,6 @@
     "file_name": "playground/opensource_json/geoqa+.json",
     "repeat_time": 1
   },
-  "llava_instruct_150k_zh": {
-    "file_name": "playground/opensource_json/llava_instruct_150k_zh.json",
-    "repeat_time": 1
-  },
-
-
-  "common_en_sft_70k": {
-    "file_name": "playground/opensource_json/common_en_sft_70k.json",
-    "repeat_time": 1
-  },
-  "common_zh_sft_70k": {
-    "file_name": "playground/opensource_json/common_zh_sft_70k.json",
-    "repeat_time": 1
-  },
-
 
 
   "updated_ChromeWriting_8k": {

@@ -74,7 +74,7 @@ class BasePlugin:
         r"""
         Pre-processes a single image.
         """
-        image_resolution: int = kwargs.get("image_resolution")
+        image_resolution: int = kwargs.get("image_resolution") ### 默认 512
         if max(image.width, image.height) > image_resolution:
             resize_factor = image_resolution / max(image.width, image.height)
             width, height = int(image.width * resize_factor), int(image.height * resize_factor)

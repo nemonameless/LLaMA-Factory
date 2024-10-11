@@ -1,0 +1,10 @@
+{
+  "ai2d_train_12k": {
+    "file_name": "playground/opensource_json/ai2d_train_12k.json",
+    "repeat_time": 1
+  },
+  "docvqa_train_10k": {
+    "file_name": "playground/opensource_json/docvqa_train_10k.json",
+    "repeat_time": 2
+  }
+}

@@ -9,6 +9,16 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+
+Qwen2-VL-2B-Instruct
+Qwen2-VL-7B-Instruct
+work_dirs/
+playground
+LLaVA-OneVision-Data_doc
+LLaVA-OneVision-Data_OCR
+LLaVA-OneVision-Data_math_reasoning
+LLaVA-OneVision-Data_vqa
+
 develop-eggs/
 dist/
 downloads/

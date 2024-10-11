@@ -1,19 +1,4 @@
 {
-  "mllm_demo": {
-    "file_name": "mllm_demo.json",
-    "formatting": "sharegpt",
-    "repeat_time": 1,
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tags": {
-      "role_tag": "role",
-      "content_tag": "content",
-      "user_tag": "user",
-      "assistant_tag": "assistant"
-    }
-  },
   "dvqa_train_200k": {
     "file_name": "playground/opensource_json/dvqa_train_200k.json",
     "repeat_time": 1
@@ -38,21 +23,6 @@
     "file_name": "playground/opensource_json/geoqa+.json",
     "repeat_time": 1
   },
-  "llava_instruct_150k_zh": {
-    "file_name": "playground/opensource_json/llava_instruct_150k_zh.json",
-    "repeat_time": 1
-  },
-
-
-  "common_en_sft_70k": {
-    "file_name": "playground/opensource_json/common_en_sft_70k.json",
-    "repeat_time": 1
-  },
-  "common_zh_sft_70k": {
-    "file_name": "playground/opensource_json/common_zh_sft_70k.json",
-    "repeat_time": 1
-  },
-
 
 
   "updated_ChromeWriting_8k": {
@@ -167,64 +137,6 @@
   },
   "visualmrc_filter_sptoken_3022": {
     "file_name": "LLaVA-OneVision-Data_doc/visualmrc_filter_sptoken_3022.json",
-    "repeat_time": 1
-  },
-
-
-  "CLEVR-Math(MathV360K)_filter_sptoken_5280": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/CLEVR-Math(MathV360K)_filter_sptoken_5280.json",
-    "repeat_time": 1
-  },
-  "geo170k(align)_filter_sptoken_60158": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/geo170k(align)_filter_sptoken_60158.json",
-    "repeat_time": 1
-  },
-  "geo170k(qa)_filter_sptoken_67671": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/geo170k(qa)_filter_sptoken_67671.json",
-    "repeat_time": 1
-  },
-  "Geometry3K(MathV360K)_filter_sptoken_9724": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/Geometry3K(MathV360K)_filter_sptoken_9724.json",
-    "repeat_time": 1
-  },
-  "geomverse(cauldron)_filter_sptoken_9298": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/geomverse(cauldron)_filter_sptoken_9298.json",
-    "repeat_time": 1
-  },
-  "GeoQA+(MathV360K)_filter_sptoken_17140": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/GeoQA+(MathV360K)_filter_sptoken_17140.json",
-    "repeat_time": 1
-  },
-  "lrv_normal(filtered)_filter_sptoken_9377": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/lrv_normal(filtered)_filter_sptoken_9377.json",
-    "repeat_time": 1
-  },
-  "MapQA(MathV360K)_filter_sptoken_5225": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/MapQA(MathV360K)_filter_sptoken_5225.json",
-    "repeat_time": 1
-  },
-  "mavis_math_metagen_filter_sptoken_87348": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/mavis_math_metagen_filter_sptoken_87348.json",
-    "repeat_time": 1
-  },
-  "mavis_math_rule_geo_filter_sptoken_99990": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/mavis_math_rule_geo_filter_sptoken_99990.json",
-    "repeat_time": 1
-  },
-  "raven(cauldron)_filter_sptoken_41995": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/raven(cauldron)_filter_sptoken_41995.json",
-    "repeat_time": 1
-  },
-  "Super-CLEVR(MathV360K)_filter_sptoken_8642": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/Super-CLEVR(MathV360K)_filter_sptoken_8642.json",
-    "repeat_time": 1
-  },
-  "TabMWP(MathV360K)_filter_sptoken_22452": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/TabMWP(MathV360K)_filter_sptoken_22452.json",
-    "repeat_time": 1
-  },
-  "UniGeo(MathV360K)_filter_sptoken_11905": {
-    "file_name": "LLaVA-OneVision-Data_math_reasoning/UniGeo(MathV360K)_filter_sptoken_11905.json",
     "repeat_time": 1
   }
 }
