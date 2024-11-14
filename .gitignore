@@ -9,6 +9,15 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+
+Qwen2-VL-7B-Instruct
+Qwen2-VL-2B-Instruct
+Qwen2-VL-7B-Instruct/
+Qwen2-VL-2B-Instruct/
+work_dirs/
+data/playground
+data/playground/
+
 develop-eggs/
 dist/
 downloads/
